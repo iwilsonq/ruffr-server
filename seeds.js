@@ -1,9 +1,8 @@
 const faker = require('faker');
 const _ = require('lodash');
 const { Db, Server } = require('mongodb');
-const BREEDS = require('./constants');
-
-console.log(BREEDS);
+const fs = require('fs');
+const { BREEDS, PLACEHOLDERS } = require('./constants');
 
 const MIN_DOGS = 10;
 const DOGS_TO_ADD = 10;
@@ -28,12 +27,12 @@ db.open()
 
 function createDog() {
   return {
-    name: faker.name.findName(),
+    name: faker.name.firstName(),
     about: faker.lorem.sentence(),
     breed: getBreed(),
     age: randomBetween(1, 15),
     gender: getGender(),
-    pictures: [faker.image.animals()]
+    pictures: [getPictures()]
   };
 }
 
@@ -48,4 +47,8 @@ function getGender() {
 
 function randomBetween(start, end) {
   return ~~(start + Math.random() * (end - start));
+}
+
+function getPictures() {
+  return PLACEHOLDERS[~~(Math.random() * PLACEHOLDERS.length)];
 }

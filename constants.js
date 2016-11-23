@@ -14,4 +14,10 @@ const BREEDS = [
   'DACHSHUND'
 ];
 
-module.exports = BREEDS;
+const PLACEHOLDERS = [
+  'alex.jpg',
+  'dashund.jpg',
+  'tigger.jpg'
+];
+
+module.exports = { BREEDS, PLACEHOLDERS };
