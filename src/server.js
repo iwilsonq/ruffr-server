@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 const PORT = process.env.PORT || 4000;
 const router = require('./router');
 
@@ -12,6 +13,7 @@ mongoose.connect('mongodb://localhost/ruffr');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
+app.use(cors());
 app.use(express.static('public'));
 
 router(app);

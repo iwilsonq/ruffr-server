@@ -4,7 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "start": "nodemon server.js",
+    "start": "nodemon ./src/server.js",
     "test": "nodemon --exec 'mocha -R min'"
   },
   "author": "",
@@ -13,6 +13,7 @@
     "body-parser": "^1.15.2",
     "cloudinary": "^1.4.6",
     "connect-multiparty": "^2.0.0",
+    "cors": "^2.8.1",
     "express": "^4.14.0",
     "faker": "^3.1.0",
     "lodash": "^4.17.2",

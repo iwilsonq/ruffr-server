@@ -1,5 +1,6 @@
 const cloudinary = require('cloudinary');
-const Pet = require('./models/pet');
+const User = require('./models/user');
+const Pet = require('./models/pet')
 
 cloudinary.config({
   cloud_name:	'ruffr',
@@ -9,13 +10,17 @@ cloudinary.config({
 
 module.exports = function(app) {
   app.get('/', (req, res) => {
-    Dog.find({})
+    User.find({})
       .then(result => {
         res.send(result)
       });
   });
 
-  app.get('/dog/:id', (req, res) => {
-    res.send('hello');
+  app.get('/pets', (req, res) => {
+    Pet.find({})
+      .then(result => {
+        res.send(result)
+      });
   });
+
 }

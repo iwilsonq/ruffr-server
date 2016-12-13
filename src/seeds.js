@@ -4,36 +4,36 @@ const { Db, Server } = require('mongodb');
 const fs = require('fs');
 const { BREEDS, PLACEHOLDERS } = require('./constants');
 
-const MIN_DOGS = 20;
-const DOGS_TO_ADD = 10;
+const MIN_PETS = 20;
+const PETS_TO_ADD = 10;
 
-let dogsCollection;
+let petsCollection;
 const db = new Db('ruffr', new Server('localhost', 27017));
 
 db.open()
   .then(() => {
-    dogsCollection = db.collection('dogs');
-    return dogsCollection.count();
+    petsCollection = db.collection('pets');
+    return petsCollection.count();
   })
   .then(count => {
-    if (count < MIN_DOGS) {
-      const dogs = _.times(DOGS_TO_ADD, () => createDog());
-      dogsCollection.insertMany(dogs);
+    if (count < MIN_PETS) {
+      const pets = _.times(PETS_TO_ADD, () => createPet());
+      petsCollection.insertMany(pets);
     }
   })
   .catch(e => console.log(e));
 
-function createDog() {
-  const dog = {
+function createPet() {
+  const pet = {
     name: faker.name.firstName(),
     about: faker.lorem.sentence(),
-    breed: getBreed(),
-    age: randomBetween(1, 15),
+    // breed: getBreed(),
+    age: randomBetween(1, 20),
     gender: getGender(),
     pictures: [getPictures()]
   }
-  console.log(dog);
-  return dog;
+  console.log(pet);
+  return pet;
 }
 
 function getBreed() {
