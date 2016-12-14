@@ -23,4 +23,17 @@ module.exports = function(app) {
       });
   });
 
+  app.post('/create', (req, res) => {
+    let pictures = [];
+    pictures.push(req.body.image);
+
+    let pet = new Pet({
+      name: req.body.name,
+      about: req.body.about,
+      pictures
+    });
+
+    pet.save();
+  });
+
 }
