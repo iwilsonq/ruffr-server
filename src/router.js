@@ -33,7 +33,8 @@ module.exports = function(app) {
       pictures
     });
 
-    pet.save();
+    pet.save()
+      .then(() => res.send('New post: ' + req.body.name + ' created!'));
   });
 
 }
