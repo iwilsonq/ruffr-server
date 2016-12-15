@@ -12,8 +12,9 @@ const PetSchema = new Schema({
   },
   age: Number,
   about: String,
-  gender: String,
-  pictures: [String]
+  image: String,
+  image_id: String,
+  createdAt: Date
 });
 
 const Pet = mongoose.model('pet', PetSchema);
