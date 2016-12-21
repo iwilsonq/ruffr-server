@@ -7,6 +7,9 @@
     "start": "nodemon ./src/server.js",
     "test": "nodemon --exec 'mocha -R min'"
   },
+  "engines": {
+    "node": "6.4.0"
+  },
   "author": "",
   "license": "ISC",
   "dependencies": {
