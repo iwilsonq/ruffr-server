@@ -12,10 +12,7 @@ cloudinary.config({
 
 module.exports = function(app) {
   app.get('/', (req, res) => {
-    User.find({})
-      .then(result => {
-        res.send(result)
-      });
+    res.sendFile('../build/index.html');
   });
 
   app.get('/pets', (req, res) => {
