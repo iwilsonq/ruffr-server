@@ -11,10 +11,16 @@ mongoose.Promise = Promise;
 
 mongoose.connect('mongodb://heroku_wk142pt6:1l9d6vqn8sh9s6lnq3hvvnmihb@ds141088.mlab.com:41088/heroku_wk142pt6');
 
+const whitelist = ['http://localhost:3000', 'https://aqueous-dusk-57308.herokuapp.com'];
+
 const corsOptions = {
-  origin: 'http://localhost:3000',
+  origin: function(origin, callback){
+    var originIsWhitelisted = whitelist.indexOf(origin) !== -1;
+    callback(originIsWhitelisted ? null : 'Bad Request', originIsWhitelisted);
+  },
   optionsSuccessStatus: 200 // some legacy browsers (IE11, various SmartTVs) choke on 204
 };
+
 app.use(cors(corsOptions));
 app.use(bodyParser.urlencoded({
   extended: true,
