@@ -1,7 +1,6 @@
 const cloudinary = require('cloudinary');
 const multipart = require('connect-multiparty');
 const multipartMiddleware = multipart();
-const path = require('path');
 const User = require('./models/user');
 const Pet = require('./models/pet')
 
@@ -13,7 +12,10 @@ cloudinary.config({
 
 module.exports = function(app) {
   app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'index.html'));
+    User.find({})
+      .then(result => {
+        res.send(result)
+      });
   });
 
   app.get('/pets', (req, res) => {
