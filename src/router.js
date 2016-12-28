@@ -4,8 +4,8 @@ const multipartMiddleware = multipart();
 const User = require('./models/user');
 const Pet = require('./models/pet')
 
-const cloudConfig = require('../config');
-cloudinary.config(cloudConfig);
+const CONFIG = require('../config');
+cloudinary.config(CONFIG.cloudConfig);
 
 module.exports = function(app) {
   app.get('/', (req, res) => {

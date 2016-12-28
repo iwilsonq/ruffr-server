@@ -3,13 +3,14 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const PORT = process.env.PORT || 4000;
+const CONFIG = require('../config');
 const router = require('./router');
 
 const app = express();
 
 mongoose.Promise = Promise;
 
-mongoose.connect('mongodb://heroku_wk142pt6:1l9d6vqn8sh9s6lnq3hvvnmihb@ds141088.mlab.com:41088/heroku_wk142pt6');
+mongoose.connect(`mongodb://${CONFIG.dbCredentials.user}:${CONFIG.dbCredentials.pass}@ds141088.mlab.com:41088/heroku_wk142pt6`);
 
 const whitelist = ['http://localhost:1337', 'https://ruffr.herokuapp.com'];
 
