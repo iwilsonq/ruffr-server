@@ -23,7 +23,7 @@ module.exports = function(app) {
   });
 
   app.post('/create', multipartMiddleware, (req, res) => {
-    cloudinary.v2.uploader.upload(req.files.image.path,
+    cloudinary.v2.uploader.upload(req.body.image,
       { width: 300, height: 280, crop: 'lfill'} , (err, result) => {
 
       const pet = new Pet({
