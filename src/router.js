@@ -24,7 +24,7 @@ module.exports = function(app) {
 
   app.post('/create', multipartMiddleware, (req, res) => {
     cloudinary.v2.uploader.upload(req.files.image.path,
-      { width: 300, height: 280, crop: 'limit'} , (err, result) => {
+      { width: 300, height: 280, crop: 'fill'} , (err, result) => {
 
       const pet = new Pet({
         name: req.body.name,
