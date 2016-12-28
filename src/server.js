@@ -12,7 +12,7 @@ mongoose.Promise = Promise;
 
 mongoose.connect(`mongodb://${CONFIG.dbCredentials.user}:${CONFIG.dbCredentials.pass}@ds141088.mlab.com:41088/heroku_wk142pt6`);
 
-const whitelist = ['http://localhost:1337', 'http://localhost:3000', 'https://ruffr.herokuapp.com'];
+const whitelist = ['http://localhost:1337', 'https://ruffr.herokuapp.com'];
 
 const corsOptions = {
   origin: function(origin, callback){
